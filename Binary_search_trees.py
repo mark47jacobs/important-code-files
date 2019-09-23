@@ -103,12 +103,3 @@ for i in l:
 
 print(t)
 
-
-
-
-
-
-    
-
-
-
