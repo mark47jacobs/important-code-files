@@ -92,7 +92,28 @@ void DELETEBEG()
 
 void DELETEBW()
 {
-    
+    int pos,counter = 0;
+    if(last == NULL)
+    {
+        printf("\n the list is empty :(");
+    }
+    else
+    {
+        printf("\n Enter the position at which you want to delete");
+        scanf("%d",&pos);
+        
+        struct student *p,*cur;
+        p = last->link;
+        cur = last;
+        
+        while(counter <= pos)
+        {   cur = p;
+            p = p->link;
+            counter++;
+        }
+        cur->link = p->link;
+        free(p);
+    }
 }
 
 void DELETEEND()
