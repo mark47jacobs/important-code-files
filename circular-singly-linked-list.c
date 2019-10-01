@@ -78,7 +78,16 @@ void INSERTBW()
 
 void DELETEBEG()
 {
-    
+    if(last == NULL)
+    {
+        printf("\n the list is empty :(");
+    }
+    else
+    {
+        temp = last->link;
+        last->link  = temp->link;
+        free(temp);
+    }
 }
 
 void DELETEBW()
