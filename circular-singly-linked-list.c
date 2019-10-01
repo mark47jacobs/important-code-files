@@ -76,9 +76,15 @@ void INSERTBW()
     }
 }
 
+
+
 void DELETEBEG()
-{
-    if(last == NULL)
+{   if(last->link == last)
+    {   free(last);
+        last = NULL;
+        
+    }
+    else if(last == NULL)
     {
         printf("\n the list is empty :(");
     }
@@ -93,7 +99,12 @@ void DELETEBEG()
 void DELETEBW()
 {
     int pos,counter = 0;
-    if(last == NULL)
+    if(last->link == last)
+    {   free(last);
+        last = NULL;
+        
+    }
+    else if(last == NULL)
     {
         printf("\n the list is empty :(");
     }
@@ -117,20 +128,27 @@ void DELETEBW()
 }
 
 void DELETEEND()
-{
-    if(last == NULL)
+{   if(last == NULL)
     {
         printf("\n the list is empty :(");
     }
+    if(last->link == last)
+    {   free(last);
+        last = NULL;
+        
+    }
+    
     else
     {
-        struct student *ptr = last->link,*cur;
+        struct student *ptr = last->link;
         while(ptr->link!=last)
-        {   cur = ptr;
+        {   
             ptr = ptr->link;
         }
         ptr->link = last->link;
+        free(last);
         last = ptr;
+        
     }
 }
 
@@ -163,7 +181,7 @@ void main()
     int ch;
     while(1)
     {
-        printf("1.insert at end\n2.display\n3.insertbeg\n4.insertmid\n5.deleteend\n6.exit\n");
+        printf("1.insert at end\n2.display\n3.insertbeg\n4.insertmid\n5.deleteend\n6.delete in beginning \n7. delete in between\n8.exit\n");
         printf("enter the choice\n");
         scanf("%d", &ch);
 
@@ -177,8 +195,14 @@ void main()
                      break;
             case 4 : INSERTBW();
                      break;
+            case 5 : DELETEEND();
+                     break;
+            case 6 : DELETEBEG(0);
+                     break;
+            case 7 : DELETEBW(0);
+                     break;
             
-            case 6 : exit(0);
+            case 8 : exit(0);
                      break;
         }
     } 
