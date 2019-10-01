@@ -88,7 +88,20 @@ void DELETEBW()
 
 void DELETEEND()
 {
-    
+    if(last == NULL)
+    {
+        printf("\n the list is empty :(");
+    }
+    else
+    {
+        struct student *ptr = last->link,*cur;
+        while(ptr->link!=last)
+        {   cur = ptr;
+            ptr = ptr->link;
+        }
+        ptr->link = last->link;
+        last = ptr;
+    }
 }
 
 void DISPLAY()
